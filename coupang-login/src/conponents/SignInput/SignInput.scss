@@ -1,0 +1,43 @@
+@import '../../var.scss';
+
+.login--input {
+  display: flex;
+  width: $width;
+  position: relative;
+  border: 2px solid #CCCCCC;
+  margin-top: 16px;
+
+  & > div {
+    flex-grow: 1;
+    position: relative;
+
+    & > input, & > label {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border: none;
+      width: 90%;
+      font-size: 16px;
+      padding: .8em .8em;
+    }
+
+    & > label {
+      color: #929292;
+      overflow: hidden;
+      position: absolute;
+      clip: rect(0 0 0 0);
+      clip: rect(0,0,0,0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+    }
+  }
+}
+
+.alert {
+  color: #E52528;
+  width: $width;
+  display: none;
+}

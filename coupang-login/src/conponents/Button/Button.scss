@@ -1,0 +1,28 @@
+@import '../../var.scss';
+
+.button {
+  width: $width;
+  height: 66px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px #000000;
+  font-size: 18px;
+  font-weight: 700;
+
+  &.primary.normal {
+    background-color: #0074E9;
+    color: #FFFFFF;
+  }
+  &.primary.disable {
+    background-color: #97AABD;
+    color: #D4E0ED;
+  }
+  &.secondary.normal {
+    background-color: #FFFFFF;
+    color: #0074E9;
+  }
+  &.secondary.disable {
+    background-color: #DFDFDF;
+    color: #97AABD;
+  }
+}

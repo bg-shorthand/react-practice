@@ -1,0 +1,8 @@
+@import '../../var.scss';
+
+.border {
+  width: $width;
+  height: 0;
+  border: 1px solid #CCCCCC;
+  margin: 22px;
+}
