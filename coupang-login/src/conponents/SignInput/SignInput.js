@@ -5,7 +5,7 @@ import { ReactComponent as Show } from '../../assets/icon/shape=show.svg';
 import { ReactComponent as Hide } from '../../assets/icon/shape=hide.svg';
 import Input from './Input';
 
-import './SignInput.scss';
+import { loginInput, alert } from './SignInput.module.scss';
 
 class SignInput extends Component {
 
@@ -27,7 +27,7 @@ class SignInput extends Component {
 
     return (
       <>
-        <div className={`login--input ${type}`} style={hasError ? {border: '2px solid #E52528'} : {}}>
+        <form className={`login--input ${type} ${loginInput}`} style={hasError ? {border: '2px solid #E52528'} : {}}>
           
           {type === 'email' ? <Letter/> : <Lock/>}
 
@@ -35,9 +35,9 @@ class SignInput extends Component {
           
           {type === 'password' ? visible ? <Hide onClick={this.changeVisible} /> : <Show onClick={this.changeVisible}/> : null}
 
-        </div>
+        </form>
 
-        <div className="alert">
+        <div className={`${alert}`}>
           {type === 'email' ? '아이디(이메일)는 이메일 형식으로 입력해주세요.' : '비밀번호를 입력해주세요.'}
         </div>
       </>

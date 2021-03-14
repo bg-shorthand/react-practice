@@ -1,0 +1,24 @@
+.autoCheck {
+  position: relative;
+  width: 200px;
+  height: 30px;
+  align-self: flex-start;
+
+  & > input, & > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  & > input {
+    opacity: 0;
+  }
+
+  & > label {
+    display: flex;
+    flex-flow: row;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+  }
+}

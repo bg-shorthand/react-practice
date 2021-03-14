@@ -1,8 +1,8 @@
-import './Button.scss'
+import { button } from './Button.module.scss'
 
 const Button = ({ mode, state, children }) => {
   return (
-    <button className={`button ${mode} ${state}`}>
+    <button className={`${button} ${mode} ${state}`}>
       {children}
     </button>
   )
