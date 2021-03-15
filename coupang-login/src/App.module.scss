@@ -1,0 +1,15 @@
+@import './var.scss';
+
+.container {
+  width: $width;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 18px;
+
+  & > a {
+    color: #0074E9;
+    text-decoration: none;
+  }
+}
