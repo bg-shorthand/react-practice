@@ -1,6 +1,8 @@
+import { input } from "./Input.module.scss";
+
 const Input = ({ text, addTodo }) => {
   return (
-    <form onSubmit={addTodo}>
+    <form className={input} onSubmit={addTodo}>
       <input type="text" placeholder={text} autoFocus />
     </form>
   );

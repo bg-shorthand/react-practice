@@ -1,10 +1,10 @@
-import { useState } from "react";
-
 import { ReactComponent as Icon } from "../../../assets/shape.svg";
+
+import style from "./Todos.module.scss";
 
 const Todos = ({ todos, changeCompleted, removeTodo }) => {
   return (
-    <ul className="todos">
+    <ul className={`todos ${style.todos}`}>
       {todos.map(({ id, content, completed }) => {
         return (
           <li key={id} id={id} onChange={changeCompleted} onClick={removeTodo}>

@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10px 0;
+
+  & > li {
+    margin: 0 10px;
+  }
+
+  & > .active {
+    font-weight: 700;
+    color: red;
+  }
+}

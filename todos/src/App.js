@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { header, footer } from "./App.module.scss";
 
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -56,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <header>
+        <header className={header}>
           <Header />
         </header>
         <main>
@@ -68,7 +69,7 @@ class App extends Component {
             removeTodo={this.removeTodo}
           />
         </main>
-        <footer>
+        <footer className={footer}>
           <Footer />
         </footer>
       </>

@@ -1,0 +1,15 @@
+.todos {
+  width: 100%;
+
+  & > li {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    padding: 10px 0;
+
+    & > label {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+}
