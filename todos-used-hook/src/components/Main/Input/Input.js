@@ -1,10 +1,16 @@
-const Input = ({ disfatch, todos }) => {
+import { useContext } from "react";
+
+import { TodosContext } from "../../Context/Context";
+
+const Input = () => {
+  const { todos, dispatch } = useContext(TodosContext);
+
   return (
     <input
       type="text"
       onKeyUp={(e) => {
         if (e.key !== "Enter") return;
-        disfatch({
+        dispatch({
           type: "addTodos",
           newTodo: {
             id:

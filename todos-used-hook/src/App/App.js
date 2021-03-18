@@ -1,12 +1,13 @@
 import { useReducer } from "react";
 
+import { Context } from "../components/Context/Context";
 import Header from "../components/Header/Header";
 import CompletedAll from "../components/Main/CompletedAll/CompletedAll";
 import Input from "../components/Main/Input/Input";
 import RemoveCompleted from "../components/Main/RemoveCompleted/RemoveCompleted";
 import Todos from "../components/Main/Todos/Todos";
 
-import { todos } from "../state/state.json";
+import state from "../state/state.json";
 
 import "./App.css";
 
@@ -34,27 +35,21 @@ const reducer = (state, action) => {
   }
 };
 
-function App() {
-  const [_todos, disfatch] = useReducer(reducer, todos);
+export function App() {
+  const [todos, dispatch] = useReducer(reducer, state.todos);
 
   return (
-    <>
+    <Context value={{ todos, dispatch }}>
       <header>
         <Header title="TODOS" ver="1.0" />
       </header>
       <main>
-        <Input disfatch={disfatch} todos={_todos} />
-        <Todos disfatch={disfatch} todos={_todos} />
-        <CompletedAll disfatch={disfatch} todos={_todos} />
-        <RemoveCompleted
-          completed={_todos.filter((todo) => todo.completed).length}
-          all={_todos.length}
-          disfatch={disfatch}
-        />
+        <Input />
+        <Todos />
+        <CompletedAll />
+        <RemoveCompleted />
       </main>
       <footer></footer>
-    </>
+    </Context>
   );
 }
-
-export default App;

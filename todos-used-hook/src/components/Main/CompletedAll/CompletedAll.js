@@ -1,6 +1,10 @@
 import { useRef } from "react";
+import { useContext } from "react";
 
-const CompletedAll = ({ disfatch, todos }) => {
+import { TodosContext } from "../../Context/Context";
+
+const CompletedAll = () => {
+  const { dispatch } = useContext(TodosContext);
   const completedAll = useRef();
 
   return (
@@ -9,7 +13,7 @@ const CompletedAll = ({ disfatch, todos }) => {
         id="completedAll"
         type="checkbox"
         onChange={() => {
-          disfatch({
+          dispatch({
             type: "completedAll",
             checked: completedAll.current.checked,
           });

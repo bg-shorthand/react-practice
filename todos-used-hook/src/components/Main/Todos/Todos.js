@@ -1,4 +1,10 @@
-const Todos = ({ todos, disfatch }) => {
+import { useContext } from "react";
+
+import { TodosContext } from "../../Context/Context";
+
+const Todos = () => {
+  const { todos, dispatch } = useContext(TodosContext);
+
   return (
     <ul>
       {todos.map(({ id, content, completed }) => {
@@ -9,7 +15,7 @@ const Todos = ({ todos, disfatch }) => {
               type="checkbox"
               checked={completed}
               onChange={() => {
-                disfatch({
+                dispatch({
                   type: "completedTodo",
                   id: id,
                 });
@@ -18,7 +24,7 @@ const Todos = ({ todos, disfatch }) => {
             <label htmlFor={id}>{content}</label>
             <button
               onClick={() => {
-                disfatch({
+                dispatch({
                   type: "removeTodo",
                   id: id,
                 });
