@@ -1,0 +1,9 @@
+.Nav {
+  display: flex;
+  flex-flow: row nowrap;
+
+  li {
+    list-style: none;
+    margin: 0 20px;
+  }
+}
