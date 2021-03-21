@@ -1,9 +1,12 @@
-import styles from "./Nav.module.scss";
 import { NavLink } from "react-router-dom";
+import styles from "./Nav.module.scss";
 
 const Nav = () => {
   return (
     <ul className={styles.Nav}>
+      <li>
+        <NavLink to="/">ALL</NavLink>
+      </li>
       <li>
         <NavLink to="/comedy">COMEDY</NavLink>
       </li>

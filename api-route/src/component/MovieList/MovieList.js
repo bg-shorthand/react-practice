@@ -1,38 +1,46 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ListState } from "../../App/App";
 import { ReactComponent as Spinner } from "../../assets/spinner.svg";
 
 const MovieList = ({ genre }) => {
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { state, setState } = useContext(ListState);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      setState(() => ({
+        ...state,
+        isLoading: true,
+      }));
       const res = await fetch(
         `https://yts.mx/api/v2/list_movies.json?genre=${genre}`
       );
       const data = await res.json();
-      const list = data.data.movies;
-
-      setList(() => [...list]);
-      setIsLoading(false);
+      setState(() => ({
+        ...state,
+        list: [...data.data.movies],
+        isLoading: false,
+        keyword: genre,
+      }));
     };
     fetchData();
-  }, [genre]);
+  }, []);
 
   return (
     <>
-      {isLoading ? <Spinner /> : null}
-      <ul>
-        {list.map(({ medium_cover_image, id, title }) => (
-          <li key={id}>
-            <figure>
-              <img src={medium_cover_image} alt={title} />
-              <figcaption>{title}</figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
+      {state.isLoading ? (
+        <Spinner />
+      ) : (
+        <ul>
+          {state.list.map(({ medium_cover_image, id, title }) => (
+            <li key={id}>
+              <figure>
+                <img src={medium_cover_image} alt={title} />
+                <figcaption>{title}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
