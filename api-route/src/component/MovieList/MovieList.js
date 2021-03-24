@@ -6,6 +6,7 @@ const MovieList = ({ genre }) => {
   const { state, setState } = useContext(ListState);
 
   useEffect(() => {
+    console.log("effect");
     const fetchData = async () => {
       setState(() => ({
         ...state,
@@ -31,11 +32,11 @@ const MovieList = ({ genre }) => {
         <Spinner />
       ) : (
         <ul>
-          {state.list.map(({ medium_cover_image, id, title }) => (
+          {state.list.map(({ medium_cover_image, id, title, genres }) => (
             <li key={id}>
               <figure>
                 <img src={medium_cover_image} alt={title} />
-                <figcaption>{title}</figcaption>
+                <figcaption>{`${title}(${genres[0]})`}</figcaption>
               </figure>
             </li>
           ))}
