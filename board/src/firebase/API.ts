@@ -11,7 +11,9 @@ const addPost = (newPost: post) => {
 
 const getAllPost = async () => {
   const snapshot = await postsCollectionRef.get();
-  const list = snapshot.docs.map((post) => post.data());
+  const list = snapshot.docs
+    .map((post) => post.data())
+    .sort((a, b) => (a.id > b.id ? -1 : 1));
   return list;
 };
 
@@ -19,7 +21,8 @@ const getPoem = async () => {
   const snapshot = await postsCollectionRef.get();
   const list = snapshot.docs
     .map((post) => post.data())
-    .filter((post) => post.category === "poem");
+    .filter((post) => post.category === "poem")
+    .sort((a, b) => (a.id > b.id ? -1 : 1));
   return list;
 };
 
@@ -27,7 +30,8 @@ const getNovel = async () => {
   const snapshot = await postsCollectionRef.get();
   const list = snapshot.docs
     .map((post) => post.data())
-    .filter((post) => post.category === "novel");
+    .filter((post) => post.category === "novel")
+    .sort((a, b) => (a.id > b.id ? -1 : 1));
   return list;
 };
 
@@ -35,8 +39,14 @@ const getEssay = async () => {
   const snapshot = await postsCollectionRef.get();
   const list = snapshot.docs
     .map((post) => post.data())
-    .filter((post) => post.category === "essay");
+    .filter((post) => post.category === "essay")
+    .sort((a, b) => (a.id > b.id ? -1 : 1));
   return list;
 };
 
-export { addPost, getAllPost, getPoem, getNovel, getEssay };
+const getPost = async (id: string) => {
+  const snapshot = await postsDocRef(id).get();
+  return snapshot;
+};
+
+export { addPost, getAllPost, getPoem, getNovel, getEssay, getPost };

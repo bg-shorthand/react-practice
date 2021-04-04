@@ -1,9 +1,15 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { CombinedState } from "redux";
 import { post, posts } from "../../constance/type";
 
-const List = () => {
+type listProps = {
+  className: string;
+  asyncAction: Function;
+};
+
+const List = ({ className, asyncAction }: listProps) => {
   const posts = useSelector(
     (
       state: CombinedState<{
@@ -12,13 +18,24 @@ const List = () => {
       }>
     ) => state.post
   );
+  const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(asyncAction());
+  }, [asyncAction, dispatch]);
 
   return (
-    <ul>
+    <ul className={className}>
       {posts.map((post) => {
-        return <li>{post.title}</li>;
+        return (
+          <Link to={`/${post.id}`} key={post.id}>
+            <li key={post.id}>
+              <div>{`[${post.category}]`}</div>
+              <h2>{post.title}</h2>
+              <div>{post.id}</div>
+            </li>
+          </Link>
+        );
       })}
     </ul>
   );

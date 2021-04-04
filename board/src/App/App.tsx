@@ -6,7 +6,7 @@ function App() {
   return (
     <StoreProvider>
       <Router>
-        <Board />;
+        <Board />
       </Router>
     </StoreProvider>
   );
