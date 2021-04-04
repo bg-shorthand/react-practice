@@ -6,4 +6,6 @@ type post = {
   category: "poem" | "novel" | "essay";
 };
 
-export type { post };
+type posts = post[];
+
+export type { post, posts };
